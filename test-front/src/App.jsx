@@ -1,10 +1,19 @@
 import './App.css'
-import Title from './Title'
+import Title from './components/Title'
+import Human from './components/Human'
 
 function App() {
+  const humans = [{ name: 'Juan', planet: 'Saturn' }, { name: 'Marcus', planet: 'Mars' }]
+
+
+
 
   return (
-    <Title />
+    <>
+      <Human human={humans} />
+      <Title />
+    </>
+
   )
 }
 
