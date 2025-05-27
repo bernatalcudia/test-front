@@ -3,8 +3,13 @@ const Human = ({ human }) => {
 
     return (
         <>
-            {human.map(human => <li> {human.name}</li>)}
-            {human.map(human => <li> {human.planet}</li>)}
+            {human.map(human => (
+
+                <div>
+                    <img src="" alt="" />
+                    <li key={human.id}> {human.name}, {human.planet}</li>
+                </div>
+            ))}
         </>
     )
 
