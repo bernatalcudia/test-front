@@ -1,34 +1,46 @@
 import './App.css'
-import Title from './components/Title'
-import Human from './components/Human'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function App() {
-  const humans = [{ name: 'Juan', planet: 'Saturn' }, { name: 'Marcus', planet: 'Mars' }]
-  const [showHumanView, setHumanView] = useState(false)
-  const [showTitleView, setTitleView] = useState(false)
 
-  const handleShowHuman = () => {
-    setHumanView(true)
+  const [password, setPassword] = useState('hi')
+  const textPassword = 'the password color'
+
+
+
+  const handleInputValidation = (event) => {
+    const passwordLength = event.target.value.length
+    setPassword(password)
+    console.log(passwordLength)
+
+
+    if (passwordLength > 9) {
+      // h3.style.color = 'green';
+      setPassword('The password is save:', password)
+      console.log(password)
+    }
+    if (passwordLength > 7 && passwordLength < 9) {
+      // h3.style.color = 'orange';
+      setPassword('The password is not save', password)
+      console.log(password)
+    }
+    if (passwordLength < 7) {
+      // h3.style.color = 'red';
+      setPassword('The password is too short', password)
+      console.log(password)
+    }
+
+    useEffect(() => {
+      handleInputValidation(password)
+    }, [password])
+
+
   }
-
-  const handleShowTitle = () => {
-    setTitleView(true)
-  }
-
 
   return (
     <>
-      <button onClick={() => setHumanView(handleShowHuman)}>Human</button>
-      <button onClick={() => setTitleView(handleShowTitle)}>Title</button>
-
-      {showHumanView &&
-        <Human human={humans} />
-      }
-      {showTitleView &&
-        <Title />
-      }
-
+      <input onChange={handleInputValidation} type='text' placeholder='add a password' />
+      <text >{textPassword}</text>
     </>
 
   )
