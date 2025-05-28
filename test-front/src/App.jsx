@@ -5,17 +5,30 @@ import { useState } from 'react'
 
 function App() {
   const humans = [{ name: 'Juan', planet: 'Saturn' }, { name: 'Marcus', planet: 'Mars' }]
-  const [counter, setCounter] = useState(0)
+  const [showHumanView, setHumanView] = useState(false)
+  const [showTitleView, setTitleView] = useState(false)
 
+  const handleShowHuman = () => {
+    setHumanView(true)
+  }
 
+  const handleShowTitle = () => {
+    setTitleView(true)
+  }
 
 
   return (
     <>
-      <Human human={humans} />
-      <Title />
-      <button onClick={() => setCounter(counter + 1)}></button>
-      <p>{counter}</p>
+      <button onClick={() => setHumanView(handleShowHuman)}>Human</button>
+      <button onClick={() => setTitleView(handleShowTitle)}>Title</button>
+
+      {showHumanView &&
+        <Human human={humans} />
+      }
+      {showTitleView &&
+        <Title />
+      }
+
     </>
 
   )
