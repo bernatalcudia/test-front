@@ -14,11 +14,11 @@ function App() {
     <>
       <BrowserRouter>
         <>
-          <Link to='/userlist' >UserList</Link>
+          <Link to='/users' >UserList</Link>
           <Link to='/title' >Title</Link>
         </>
         <Routes>
-          <Route path='/userlist' element={<UserList />} />
+          <Route path='/users' element={<UserList />} />
           <Route path='/title' element={<Title />} />
         </Routes>
       </BrowserRouter>
