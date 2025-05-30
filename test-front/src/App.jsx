@@ -1,49 +1,32 @@
 import './App.css'
 import { useEffect, useState } from 'react'
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
+import UserList from './components/UserList'
+import Title from './components/Title'
 
 function App() {
 
-  const [password, setPassword] = useState('hi')
-  const textPassword = 'the password color'
 
 
-
-  const handleInputValidation = (event) => {
-    const passwordLength = event.target.value.length
-    setPassword(password)
-    console.log(passwordLength)
-
-
-    if (passwordLength > 9) {
-      // h3.style.color = 'green';
-      setPassword('The password is save:', password)
-      console.log(password)
-    }
-    if (passwordLength > 7 && passwordLength < 9) {
-      // h3.style.color = 'orange';
-      setPassword('The password is not save', password)
-      console.log(password)
-    }
-    if (passwordLength < 7) {
-      // h3.style.color = 'red';
-      setPassword('The password is too short', password)
-      console.log(password)
-    }
-
-    useEffect(() => {
-      handleInputValidation(password)
-    }, [password])
-
-
-  }
 
   return (
+
     <>
-      <input onChange={handleInputValidation} type='text' placeholder='add a password' />
-      <text >{textPassword}</text>
+      <BrowserRouter>
+        <>
+          <Link to='/userlist' >UserList</Link>
+          <Link to='/title' >Title</Link>
+        </>
+        <Routes>
+          <Route path='/userlist' element={<UserList />} />
+          <Route path='/title' element={<Title />} />
+        </Routes>
+      </BrowserRouter>
     </>
 
   )
+
+
 }
 
 export default App
